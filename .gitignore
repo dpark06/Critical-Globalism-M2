@@ -1,6 +1,6 @@
 # Only the website and the UI review notes are tracked.
 /*
-!/website/
+!/docs/
 !/ui-review/
 !/README.md
 !/.gitignore

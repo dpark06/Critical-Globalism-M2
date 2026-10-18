@@ -6,10 +6,10 @@ The site is plain HTML, CSS, and JavaScript with no build step.
 
 ## Run it
 
-Open `website/index.html` in a browser, or serve the folder:
+Open `docs/index.html` in a browser, or serve the folder:
 
 ```bash
-cd website
+cd docs
 python3 -m http.server 8765
 ```
 
@@ -17,7 +17,7 @@ Then visit http://localhost:8765. Fonts load from Google Fonts, so a connection 
 
 ## What is in here
 
-- `website/`: the site (`index.html`, `app.js`, `data.js`, `styles.css`, `images/`). Routes use the URL hash: `#/map`, `#/full`, `#/read/<id>`, `#/practice/sort|flip|build`, `#/mastery`.
+- `docs/`: the site (`index.html`, `app.js`, `data.js`, `styles.css`, `images/`). Routes use the URL hash: `#/map`, `#/full`, `#/read/<id>`, `#/practice/sort|flip|build`, `#/mastery`.
 - `ui-review/`: the UI review inventory and report.
 
-Image credits are in `website/images/CREDITS.txt`.
+Image credits are in `docs/images/CREDITS.txt`.
