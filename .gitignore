@@ -1,0 +1,7 @@
+# Only the website and the UI review notes are tracked.
+/*
+!/website/
+!/ui-review/
+!/README.md
+!/.gitignore
+**/.DS_Store
