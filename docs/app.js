@@ -14,8 +14,9 @@
   const KEY = 'walk-the-concept-v1';
   const blank = () => ({ unpacked: {}, said: {}, sort: {}, builds: [], teach: '', flip: { pred: '', same: '', changed: '' }, draft: { kind: 'Song', item: '', lane: 'reproduced', reading: 'goldstein', text: '' }, follow: true });
   let S = blank();
-  try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(blank(), JSON.parse(raw)); } catch (e) { /* storage unavailable */ }
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* ignore */ } };
+  try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ }
+  try { const raw = sessionStorage.getItem(KEY); if (raw) S = Object.assign(blank(), JSON.parse(raw)); } catch (e) { /* storage unavailable */ }
+  const save = () => { try { sessionStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* ignore */ } };
 
   /* ---------- glossary (key words, all from the readings) ---------- */
   const GLOSS = {};
