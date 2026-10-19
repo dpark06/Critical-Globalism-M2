@@ -157,7 +157,7 @@
         <div class="hero-grid">
           <div class="hcopy">
             <div class="label">Interactive concept map</div>
-            <p class="lead">Racial capitalism is not a topic to memorize; it is a relation to trace across the readings. Predicting, sorting, toggling, and building, you rehearse the concept until you can explain it to someone else.</p>
+            <p class="lead">Racial capitalism is easier to say than to explain. Here you predict, sort, toggle, and build until you can explain it to someone else, using the course readings and a few things from outside the class.</p>
             <div class="cta"><a class="btn" href="#/read/koshy">Begin the walk →</a><a class="btn out" href="#/map">Open the map</a><a class="btn out" href="#/full">Read the full map</a></div>
             <p class="sans muted note">Readings, practice, and a map you build yourself</p>
           </div>
@@ -168,9 +168,9 @@
     <section class="how"><div class="wrap">
       <div class="label">How the walk works</div>
       <div class="steps">
-        <div class="step" style="--c:var(--reproduced)"><div class="label c-reproduced">Step 1</div><h3>See the map</h3><p>The map shows how each reading, its key words, and its links beyond the class connect; filtering by layer and opening any node turns a diagram into an argument.</p></div>
-        <div class="step" style="--c:var(--renewed)"><div class="label c-renewed">Step 2</div><h3>Work each reading</h3><p>Two quotes anchor each reading. Tapping the underlined words unpacks their meaning; restating the idea in your own words unlocks the next quote.</p></div>
-        <div class="step" style="--c:var(--hidden)"><div class="label c-hidden">Step 3</div><h3>Prove it</h3><p>Sorting scenarios into reproduced, renewed, or hidden tests the lanes. Flipping a law between “formally colorblind” and “racialized administration” shows what the words conceal. Building an example of your own tests the concept itself.</p></div>
+        <div class="step" style="--c:var(--reproduced)"><div class="label c-reproduced">Step 1</div><h3>See the map</h3><p>Open any node to see a reading, its key words, and where it reaches beyond the class. The layers filter what you see.</p></div>
+        <div class="step" style="--c:var(--renewed)"><div class="label c-renewed">Step 2</div><h3>Work each reading</h3><p>Each reading comes with two quotes. Tap the underlined words to see what they mean there, then say the idea back in your own words to unlock the next quote.</p></div>
+        <div class="step" style="--c:var(--hidden)"><div class="label c-hidden">Step 3</div><h3>Prove it</h3><p>Sort scenarios into the three lanes, flip a law between colorblind and racialized administration, and build an example of your own.</p></div>
       </div>
     </div></section>
     <div class="wrap" style="padding-top:64px">
@@ -289,7 +289,7 @@
       <section class="wmain">
         <div class="label" style="color:${c}">Reading · ${LANES[r.lane].name}</div>
         <h1>${esc(r.kicker.split(',')[0])}: ${esc(r.title)}</h1>
-        <p class="muted" style="margin:0;font-size:20px">${esc(r.src)}. Two quotes anchor this reading; tapping any underlined word unpacks it.</p>
+        <p class="muted" style="margin:0;font-size:20px">${esc(r.src)}. Tap an underlined word to see what it means in this reading.</p>
         <div class="sans label" style="display:flex;gap:10px;align-items:center;color:var(--ink)">Quote ${qi + 1} of ${r.quotes.length} ${r.quotes.map((_, i) => `<span style="width:12px;height:12px;border-radius:50%;background:${i === qi ? c : 'var(--rule)'};display:inline-block"></span>`).join('')}</div>
         <div class="qcard"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center"><span class="label" style="color:${c}">${esc(q.cite)}</span><span class="tag">Interactive: tap a word</span></div>
           <p class="qt">${wrapQuote(r, qi)}</p>${q.note ? `<div class="sans muted" style="font-size:13px">${esc(q.note)}</div>` : ''}
@@ -394,7 +394,7 @@
     }
     page('practice', `<div class="wrap" style="padding-top:20px;padding-bottom:30px">${tabs('sort')}
       <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center"><h1 class="page-h" style="font-size:clamp(34px,5vw,56px)">Sort it: reproduced, renewed, or hidden?</h1><span class="pill" style="color:var(--ink)">${placed} of ${total} placed</span></div>
-      <p class="muted" style="font-size:22px;margin:10px 0 0">Each scenario belongs to the lane whose mechanism it shows, though some fit more than one; placing one means defending it. Drag a scenario to a lane, or select it and choose a lane.</p>
+      <p class="muted" style="font-size:22px;margin:10px 0 0">Place each scenario in the lane whose mechanism it shows. Some fit two, so you will have to defend your choice. Drag a scenario to a lane, or select it and use the buttons.</p>
       <div class="sortgrid"><div><div class="label" style="margin-bottom:12px">Scenario deck · drag from here</div><div class="deck" id="deck">${SCENARIOS.filter(s => !S.sort[s.id]).map(s => scenHTML(s, false)).join('') || '<div class="sans muted">All scenarios placed.</div>'}</div></div>
       <div class="zones"><div class="sr-only" id="sortlive" role="status" aria-live="polite"></div>${lanes.map(l => `<div class="zone" data-zone="${l}" style="--c:${color(l)}"><h3>${LANES[l].name}</h3><p>${l === 'reproduced' ? 'Where is loss built into ordinary family or property life?' : l === 'renewed' ? 'Where did the form change but the extraction stay?' : 'Where was a political question relabeled as neutral or technical?'}</p>${SCENARIOS.filter(s => S.sort[s.id] && S.sort[s.id].lane === l).map(s => scenHTML(s, true)).join('') || '<div class="hint">Drop a scenario here</div>'}<button class="btn out small" data-place="${l}" ${sortUI.sel ? '' : 'disabled'} aria-label="Place the selected scenario in ${LANES[l].name}">Place selected here</button></div>`).join('')}</div></div>
       <div aria-live="polite">${verdict}</div></div>`);
@@ -424,7 +424,7 @@
     const enf = flipUI.mode === 'enf';
     page('practice', `<div class="wrap" style="padding-top:20px;padding-bottom:30px">${tabs('flip')}
       <h1 class="page-h" style="font-size:clamp(34px,5vw,56px)">Flip it: colorblind law, racialized administration</h1>
-      <p class="muted" style="font-size:22px;margin:10px 0 0">Harris describes “formally colorblind laws” that replaced the Black Codes’ racial language, enforced through “racialized administration.” Predict who the rule will catch; then flip the switch to see whether the prediction holds.</p>
+      <p class="muted" style="font-size:22px;margin:10px 0 0">Harris describes laws that replaced the Black Codes’ racial language and were enforced through “racialized administration.” Guess who the rule will catch, then flip the switch and see.</p>
       <div class="flip"><div class="stack">
         <div class="box"><div class="label" style="color:var(--ink)">1 · Predict first</div><div style="font-size:21px;line-height:1.35">If this rule is applied evenly, who do you expect it to catch?</div>
           ${[['Everyone equally', 'equal'], ['People already marked as a problem', 'marked'], ['Not sure yet', 'unsure']].map(([t, v]) => `<label class="opt ${S.flip.pred === v ? 'on' : ''}"><input type="radio" name="pred" value="${v}" ${S.flip.pred === v ? 'checked' : ''}>${t}</label>`).join('')}</div>
@@ -460,7 +460,7 @@
     const d = S.draft;
     page('practice', `<div class="wrap" style="padding-top:20px;padding-bottom:30px">${tabs('build')}
       <h1 class="page-h" style="font-size:clamp(34px,5vw,56px)">Build it: bring your own example.</h1>
-      <p class="muted" style="font-size:22px;margin:10px 0 0">Choose something from outside the class and show the mechanism at work; the checklist asks the questions a reviewer would ask.</p>
+      <p class="muted" style="font-size:22px;margin:10px 0 0">Pick something from outside the class and show the mechanism at work. The checklist asks what a reviewer would ask.</p>
       <div class="build"><div class="stack">
         <div class="bstep"><h3><b>1</b>Pick something from outside the class</h3><div class="chips" id="kinds">${['Film', 'Song', 'Artwork', 'News event', 'My own life'].map(k => `<button class="pill ${d.kind === k ? 'solid' : ''}" data-kind="${k}" style="color:var(--ink)"><span>${k}</span></button>`).join('')}</div><input class="field" id="item" aria-label="Your example, title" placeholder="For example: Tracy Chapman, “Fast Car” (1988)" value="${esc(d.item)}"></div>
         <div class="bstep"><h3><b>2</b>Which lane does it show?</h3><div class="chips" id="lanes">${['reproduced', 'renewed', 'hidden'].map(l => `<button class="pill ${d.lane === l ? 'solid' : ''}" data-lane="${l}" style="color:${color(l)}"><span>${LANES[l].name}</span></button>`).join('')}</div>
@@ -502,7 +502,7 @@
     const rub = [['Defines the term', /(race|racial)/i.test(t) && /(econom|capital|accumul)/i.test(t)], ['Uses a mechanism', CONN.test(t)], ['Names a limit', LIMIT.test(t)]];
     page('mastery', `<div class="wrap" style="padding-top:30px;padding-bottom:20px">
       <div class="label c-reproduced">Mastery</div><h1 class="page-h" style="font-size:clamp(36px,5vw,60px);margin-top:8px">Can you explain it back?</h1>
-      <p class="muted" style="font-size:22px;margin:10px 0 0;max-width:900px">Mastery is not recognition; it is explanation. A reading counts as done only when you can unpack its words, say its idea back, and apply it to something new.</p>
+      <p class="muted" style="font-size:22px;margin:10px 0 0;max-width:900px">A reading counts as done when you can unpack its words, say its idea back, and apply it to something new.</p>
       <div class="mgrid"><div class="card" style="padding:28px"><div class="label">Your walk</div>
         <table class="mt"><thead><tr><th>Reading</th><th>Unpack</th><th>Say it back</th><th>Apply</th></tr></thead><tbody>${ORDER.map(id => { const r = byId(id), c = checks(r), col = color(r.lane); const cell = on => `<span class="ck ${on ? 'on' : ''}" style="--c:${col}"></span>`; return `<tr style="--c:${col}"><td><i></i><a href="#/read/${id}" style="text-decoration:none">${esc(r.kicker)}</a></td><td>${cell(c.unpack)}</td><td>${cell(c.say)}</td><td>${cell(c.apply)}</td></tr>`; }).join('')}</tbody></table></div>
       <div style="display:flex;flex-direction:column;gap:24px">
