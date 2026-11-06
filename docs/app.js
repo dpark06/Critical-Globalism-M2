@@ -104,7 +104,7 @@
       <button class="follow" id="follow" aria-pressed="${S.follow !== false}" title="Highlights the line you are reading when you hover over it">Follow along: ${S.follow !== false ? 'on' : 'off'}</button>
     </nav>`;
   }
-  const footer = () => `<footer><div class="wrap"><span>Built for Critical Globalisms, Fall 2026. Every quotation cites the course reading it comes from.</span></div></footer>`;
+  const footer = () => '';
   function page(active, inner, opts) {
     app.innerHTML = nav(active) + (opts && opts.byline ? `<div class="byline"><div class="in"><span>Dominic Park · Fall 2026 · Prof. Sunhay You</span></div></div>` : '') + `<main id="main" tabindex="-1">${inner}</main>` + footer();
     closePop();
