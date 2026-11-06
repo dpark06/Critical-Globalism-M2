@@ -17,7 +17,7 @@ const READINGS = [
     title: 'Racial capitalism',
     src: 'Susan Koshy, Lisa Marie Cacho, Jodi A. Byrd, and Brian Jordan Jefferson, Introduction, Colonial Racial Capitalism (2022)',
     keyword: 'primitive accumulation',
-    explain: "Racial capitalism, as the editors use it, means an economy that needs racial difference to decide whose land, labor, and wealth can be taken. The introduction also moves the argument toward land, treating dispossession as something that keeps happening and not just the opening scene.",
+    explain: "The economy functions by exploiting racial difference to determine whose land, labor, and wealth are up for grabs. Dispossession is portrayed as an ongoing process, rather than a single event that sets the stage. Land becomes a central focus in this context.",
     quotes: [
       { t: '“did not overthrow the fixed social hierarchies of feudalism but instead extended and incorporated these unequal social and/or colonial relations”', cite: 'Koshy et al. 1', note: 'Robinson’s argument, as the editors summarize it.',
         words: [['feudalism', 'The European order of fixed ranks that capitalism is usually said to have replaced; Robinson\u2019s point is that the order did not disappear but fed into capitalism.'], ['extended and incorporated', 'Capitalism did not end these hierarchies; it took them in and put them to work, which is why racial and colonial ranking belongs to capitalism itself and not to its margins.']] },
@@ -104,7 +104,7 @@ const READINGS = [
     title: 'Commodity fetishism',
     src: 'Lisa Lowe, “A Fetishism of Colonial Commodities,” The Intimacies of Four Continents (2015)',
     keyword: 'commodity fetishism',
-    explain: "Lowe takes Marx’s idea that a commodity hides the labor behind it and points at the labor Marx left out: colonial labor. A price shows what something costs and says nothing about who made it or where. Wastelanding works the same way on land.",
+    explain: "Lowe extends Marx by focusing on colonial labor, often overlooked in his theory. The value of a commodity is shown by its price, which says nothing about the workers involved and their locations. Similarly, wastelanding conceals the impact of its exploitation on lands.",
     quotes: [
       { t: '“abstracted value occults the histories of labor, material, and geography”', cite: 'Lowe 85',
         words: [['abstracted value', 'A price or worth pulled away from the conditions that produced it.'], ['occults', 'Hides; the old sense of occult is concealed, kept from view.']] },
