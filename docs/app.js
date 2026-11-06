@@ -43,7 +43,9 @@
     'logistics': ['day', 'The systems that move materials and labor, which Day treats as a form of colonial power.'],
     'commodity fetishism': ['lowe3', 'Marx’s term for how a commodity’s value seems to belong to the object and hides the labor behind it.'],
     'free labor': ['lowe1', 'Labor called free that depended on unfree labor elsewhere.'],
-    'free trade': ['lowe1', 'The doctrine of unrestricted trade that, Lowe argues, accommodated colonial rule.'],
+    'free trade': ['lowe1', 'The doctrine of unrestricted trade. One piece of liberalism that, Lowe argues, accommodated colonial rule, and not a definition of liberalism.'],
+    'liberal humanism': ['lowe1', 'Lowe’s name for the humanist side of liberalism, which she says rests on an economy of affirmation and forgetting (Lowe 39).'],
+    'biocentric': ['wynter03', 'Describing the human as a natural organism shaped by biology, the picture Wynter says Man2 is built on (Wynter 267).'],
     'bourgeois intimacy': ['lowe1', 'The private home life of the middle class, which Lowe says was produced by the “intimacies of four continents” (Lowe 30).'],
     'colonial commodities': ['lowe1', 'Goods such as tea, silk, and opium produced through colonial trade and labor (Lowe 15).'],
     'past conditional temporality': ['lowe5', 'Reading the past as a set of contingent possibilities, the “what could have been.”'],
@@ -63,7 +65,7 @@
 
   /* ---------- written explanation: key terms become tappable ---------- */
   GLOSS['ethnoclass'] = { g: 'Wynter\u2019s word for a mode of being human tied to one class and one region.', from: 'wynter03' };
-  const ESSAY_TERMS = [['primitive accumulation'], ['dispossession'], ['social reproduction'], ['filius nullius'], ['terra nullius'], ['heirs\u2019 property'], ['racial alchemy of debt'], ['predatory inclusion'], ['wastelanding'], ['antipolitics'], ['nonplace'], ['commodity fetishism'], ['free labor'], ['Liberty'], ['accommodated'], ['endemic'], ['ethnoclass'], ['overrepresented', 'overrepresentation'], ['veridically'], ['global middle classes'], ['Man2'], ['homo narrans'], ['mimetically'], ['past conditional temporality']];
+  const ESSAY_TERMS = [['primitive accumulation'], ['dispossession'], ['social reproduction'], ['filius nullius'], ['terra nullius'], ['heirs\u2019 property'], ['racial alchemy of debt'], ['predatory inclusion'], ['wastelanding'], ['antipolitics'], ['nonplace'], ['commodity fetishism'], ['free labor'], ['liberalism'], ['economy of affirmation and forgetting'], ['biocentric'], ['dysselected'], ['ethnoclass'], ['overrepresents', 'overrepresentation'], ['veridically'], ['global middle classes'], ['Man2'], ['homo narrans'], ['mimetically'], ['past conditional temporality']];
   const ESSAY_WORDS = Math.round(ESSAY.join(' ').split(/\s+/).length / 10) * 10;
   function termify(text) {
     const low = text.toLowerCase(), hits = [];
@@ -102,7 +104,7 @@
       <button class="follow" id="follow" aria-pressed="${S.follow !== false}" title="Highlights the line you are reading when you hover over it">Follow along: ${S.follow !== false ? 'on' : 'off'}</button>
     </nav>`;
   }
-  const footer = () => `<footer><div class="wrap"><span>Built for Critical Globalisms, Fall 2026. Every quotation cites the course reading it comes from.</span><span>Confidential: copying, saving, and printing are disabled.</span></div></footer>`;
+  const footer = () => `<footer><div class="wrap"><span>Built for Critical Globalisms, Fall 2026. Every quotation cites the course reading it comes from.</span></div></footer>`;
   function page(active, inner, opts) {
     app.innerHTML = nav(active) + (opts && opts.byline ? `<div class="byline"><div class="in"><span>Dominic Park · Fall 2026 · Prof. Sunhay You</span></div></div>` : '') + `<main id="main" tabindex="-1">${inner}</main>` + footer();
     closePop();
@@ -131,7 +133,7 @@
 
   /* ---------- HOME ---------- */
   function homeArt() {
-    const KW = { koshy: 'primitive accumulation', goldstein: 'social reproduction', harris: 'alchemy of debt', day: 'wastelanding', lowe3: 'commodity fetishism', lowe1: 'free labor', lowe5: 'past conditional', wynter03: 'Man2', wm: 'Third Event' };
+    const KW = { koshy: 'primitive accumulation', goldstein: 'social reproduction', harris: 'alchemy of debt', day: 'wastelanding', lowe3: 'commodity fetishism', lowe1: 'liberalism', lowe5: 'past conditional', wynter03: 'Man2', wm: 'Third Event' };
     const F = "font-family=\"'Chakra Petch',system-ui,sans-serif\"";
     let s = '<svg viewBox="0 0 520 520" role="img" aria-label="Racial capitalism at the center, linked to the key word of each reading">';
     s += '<g fill="none" stroke="#F4F4F0" stroke-opacity=".28"><circle cx="260" cy="260" r="108"/><circle cx="260" cy="260" r="150" stroke-dasharray="2 6"/><line x1="260" y1="0" x2="260" y2="520"/><line x1="0" y1="260" x2="520" y2="260"/></g>';
@@ -312,7 +314,7 @@
         ${r.chips.map(k => { const g = gloss(k), on = Object.values(S.unpacked[id] || {}).some(a => a.some(w => norm(w) === norm(k))); return `<button class="kw" data-kw="${esc(k)}" data-pop style="--c:${c}"><b class="${on ? 'on' : ''}">${on ? '✓' : ''}</b><div><strong>${esc(k)}</strong><span>${esc(g ? g.g : '')}</span></div></button>`; }).join('')}
         <hr style="border:0;border-top:1px solid var(--rule);width:100%">
         <div class="label">Talks to</div>
-        <div class="talks">${r.links.map(l => { const o = byId(l); return `<a href="#/read/${l}" style="--c:${color(o.lane)}">${esc(o.kicker)}: ${esc(o.title)}</a>`; }).join('')}</div>
+        <div class="talks">${r.links.map(l => { const o = byId(l), note = LINK_NOTES[[r.id, l].join('|')] || LINK_NOTES[[l, r.id].join('|')] || ''; return `<a href="#/read/${l}" style="--c:${color(o.lane)}">${esc(o.kicker)}: ${esc(o.title)}</a>${note ? `<p class="lnote">${esc(note)}</p>` : ''}`; }).join('')}</div>
         <div class="label">Beyond the class</div>
         ${r.outside.map(o => `<div style="border:1.5px dashed ${c};border-radius:8px;padding:14px;font-family:var(--sans);font-size:14px;line-height:1.45"><b>${esc(o[0])}</b><br><span class="muted">${esc(o[1])}</span></div>`).join('')}
         <a class="btn out small" href="#/practice/build">Bring your own example</a>

@@ -584,3 +584,6 @@ main>.wrap,.hero2{margin-bottom:0}
 @media (max-width:1100px){.tgrid{grid-template-columns:1fr}}
 
 .byline .in{justify-content:flex-end}
+
+/* explicit link notes under 'Talks to' */
+.talks .lnote{margin:-2px 0 10px;padding:0 4px 0 18px;font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--muted)}
